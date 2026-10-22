@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kento raw - テキストを貼り付けて raw リンクを作成</title>
+  <meta name="description" content="Kento raw は、テキストやコードを貼り付けるだけで共有用の raw リンクを作れる無料のペーストサービスです。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <a class="brand" href="index.html"><span class="logo">&gt;_</span>Kento <span class="raw">raw</span></a>
+      <nav class="site-nav" aria-label="メイン">
+        <a class="btn sm primary" href="index.html">＋ 新規ペースト</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="grid">
+      <section class="card hero" id="create">
+        <h1>テキストを貼り付けて、raw リンクを作成</h1>
+        <p>コード・ログ・メモなどを貼り付けると、そのまま表示できる <strong>raw リンク</strong> が発行されます。ログイン不要・無料。</p>
+
+        <form id="paste-form" novalidate>
+          <div class="form-row">
+            <div>
+              <label for="title">タイトル（任意）</label>
+              <input type="text" id="title" name="title" maxlength="120" placeholder="例: config.json / 今日のメモ" autocomplete="off">
+            </div>
+            <div>
+              <label for="language">形式</label>
+              <select id="language" name="language">
+                <option value="plaintext">Plain text</option>
+                <option value="javascript">JavaScript</option>
+                <option value="typescript">TypeScript</option>
+                <option value="python">Python</option>
+                <option value="json">JSON</option>
+                <option value="html">HTML</option>
+                <option value="css">CSS</option>
+                <option value="bash">Bash / Shell</option>
+                <option value="java">Java</option>
+                <option value="c">C</option>
+                <option value="cpp">C++</option>
+                <option value="csharp">C#</option>
+                <option value="go">Go</option>
+                <option value="rust">Rust</option>
+                <option value="php">PHP</option>
+                <option value="ruby">Ruby</option>
+                <option value="sql">SQL</option>
+                <option value="yaml">YAML</option>
+                <option value="xml">XML</option>
+                <option value="markdown">Markdown</option>
+                <option value="lua">Lua</option>
+                <option value="kotlin">Kotlin</option>
+                <option value="swift">Swift</option>
+              </select>
+            </div>
+          </div>
+
+          <label for="content">内容 <span class="hint">（必須・最大 500KB）</span></label>
+          <textarea id="content" name="content" placeholder="ここにテキストやコードを貼り付け..." required spellcheck="false"></textarea>
+
+          <div class="actions">
+            <button type="submit" class="btn primary" id="submit-btn">raw リンクを作成</button>
+            <label class="checkbox"><input type="checkbox" id="unlisted" name="unlisted"> 一覧に表示しない（限定公開）</label>
+            <span class="counter" id="counter">0 文字 / 0 B</span>
+          </div>
+        </form>
+
+        <div id="result" class="alert success" hidden>
+          <strong>作成しました！</strong>
+          <div class="url-box">
+            <label for="raw-link" style="margin:0; flex:0 0 auto;">raw:</label>
+            <input type="text" id="raw-link" readonly>
+            <button type="button" class="btn sm" id="copy-raw">コピー</button>
+            <a class="btn sm" id="open-raw" target="_blank" rel="noopener">開く</a>
+          </div>
+          <div class="url-box">
+            <label for="view-link" style="margin:0; flex:0 0 auto;">表示:</label>
+            <input type="text" id="view-link" readonly>
+            <button type="button" class="btn sm" id="copy-view">コピー</button>
+            <a class="btn sm" id="open-view">開く</a>
+          </div>
+        </div>
+        <div id="error" class="alert error" hidden role="alert"></div>
+      </section>
+
+      <aside>
+        <section class="card" id="recent">
+          <h2>最近のペースト</h2>
+          <ul class="paste-list" id="paste-list">
+            <li class="empty">読み込み中...</li>
+          </ul>
+        </section>
+        <section class="card" style="margin-top:16px;">
+          <h2>Kento raw とは</h2>
+          <ul class="features">
+            <li>貼り付けるだけで raw リンク発行</li>
+            <li>シンタックスハイライト表示</li>
+            <li>限定公開（一覧非表示）対応</li>
+            <li>ログイン不要・完全無料</li>
+            <li>データはサーバー側 DB に保存</li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">© Kento raw — Pastefy 風のシンプルな raw リンク作成サービス</footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

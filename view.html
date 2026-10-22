@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ペースト - Kento raw</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github-dark.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <a class="brand" href="index.html"><span class="logo">&gt;_</span>Kento <span class="raw">raw</span></a>
+      <nav class="site-nav" aria-label="メイン">
+        <a class="btn sm primary" href="index.html">＋ 新規ペースト</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card" id="paste">
+      <div class="view-header">
+        <div>
+          <h1 id="paste-title">読み込み中...</h1>
+          <div class="meta" id="paste-meta"></div>
+        </div>
+        <div class="toolbar">
+          <a class="btn sm primary" id="btn-raw" href="#" rel="noopener">raw を開く</a>
+          <button class="btn sm" id="btn-copy-raw" type="button">raw リンクをコピー</button>
+          <button class="btn sm" id="btn-copy" type="button">内容をコピー</button>
+          <button class="btn sm" id="btn-download" type="button">ダウンロード</button>
+          <button class="btn sm" id="btn-wrap" type="button" aria-pressed="false">折り返し</button>
+        </div>
+      </div>
+      <div class="code-wrap" id="code-wrap">
+        <pre><code id="paste-code" class="hljs"></code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">© Kento raw</footer>
+
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/view.js"></script>
+</body>
+</html>

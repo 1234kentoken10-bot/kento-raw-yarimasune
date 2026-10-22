@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>raw</title>
+  <style>
+    html, body { margin: 0; padding: 0; background: #fff; color: #000; }
+    pre {
+      margin: 0;
+      padding: 8px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 13px;
+      line-height: 1.4;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      tab-size: 4;
+    }
+  </style>
+</head>
+<body>
+<pre id="raw"></pre>
+<script src="js/api.js"></script>
+<script>
+(async function () {
+  var el = document.getElementById('raw');
+  try {
+    var paste = await window.KentoRaw.resolveFromQuery();
+    if (!paste) { el.textContent = '404 Not Found'; return; }
+    el.textContent = paste.content || '';
+    document.title = (paste.title || 'raw') + ' (raw)';
+  } catch (err) {
+    el.textContent = 'Error: ' + (err.message || err);
+  }
+})();
+</script>
+</body>
+</html>
